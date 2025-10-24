@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: inase_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inase_db
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uapp", "-papp"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      DEBUG: "true"
+      DATABASE_URL: "mysql://app:app@db:3306/inase_db"
+      SECURITY_SALT: "2f9c7e2b1c0a4a2f8d3e5b6c7a8d9e0f1a2b3c4d5e6f708192a3b4c5d6e7f809"
+
+volumes:
+  db_data:
