@@ -1,7 +1,19 @@
+<?php
+$qp = $this->request->getQueryParams();
+
+$backTarget = ($this->request->getQuery('from') === 'report')
+    ? [
+        'controller' => 'Reports',
+        'action'     => 'index',
+        '?'          => array_intersect_key($qp, array_flip(['species'])) // reenviamos filtros conocidos
+      ]
+    : ['controller' => 'Samples', 'action' => 'index'];
+?>
+
 <h1>Detalle de muestra</h1>
 
 <?= $this->Form->create($sample, [
-    'url'    => ['action' => 'edit', $sample->id],
+    'url'    => ['action' => 'edit', $sample->id, '?' => $qp], // preserva query params al enviar
     'method' => 'patch',
     'id'     => 'sampleForm'
 ]) ?>
@@ -27,7 +39,7 @@ echo $this->Form->control('seed_quantity', [
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
   <div>
-    <?= $this->Html->link('Volver', ['action' => 'index'], ['class' => 'button']) ?>
+    <?= $this->Html->link('Volver', $backTarget, ['class' => 'button']) ?>
   </div>
 
   <div style="display:flex; gap:8px;">
@@ -41,11 +53,11 @@ echo $this->Form->control('seed_quantity', [
 
 <?= $this->Html->scriptBlock(<<<JS
 (function(){
-  const form     = document.getElementById('sampleForm');
-  const inputs   = Array.from(form.querySelectorAll('input, select, textarea'));
-  const editBtn  = document.getElementById('editBtn');
-  const saveBtn  = document.getElementById('saveBtn');
-  const cancelBtn= document.getElementById('cancelBtn');
+  const form      = document.getElementById('sampleForm');
+  const inputs    = Array.from(form.querySelectorAll('input, select, textarea'));
+  const editBtn   = document.getElementById('editBtn');
+  const saveBtn   = document.getElementById('saveBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
 
   function setDisabled(disabled){
     inputs.forEach(el => {

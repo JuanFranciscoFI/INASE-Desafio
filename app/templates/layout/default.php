@@ -27,7 +27,7 @@ $cakeDescription = 'INASE · Lab';
         </div>
         <div class="top-nav-links">
             <?= $this->Html->link('Muestras', ['controller' => 'Samples', 'action' => 'index']) ?>
-            <!-- <?= $this->Html->link('Reporte',  ['controller' => 'Reports', 'action' => 'index']) ?> -->
+            <?= $this->Html->link('Reporte',  ['controller' => 'Reports', 'action' => 'index']) ?>
         </div>
     </nav>
 
