@@ -11,17 +11,20 @@ class SamplesController extends AppController
     public function index()
     {
         $samples = $this->fetchTable('Samples')
-            ->find()
+            ->find('all', ['contain' => ['AnalysisResults']])
             ->orderDesc('id')
             ->all();
+
+        
 
         $this->set(compact('samples'));
     }
 
     public function view(string $id)
     {
-        $sample = $this->fetchTable('Samples')->get($id);
-
+        $sample = $this->fetchTable('Samples')->get($id, [
+            'contain' => ['AnalysisResults'],
+        ]);
         $this->set(compact('sample'));
     }
 
@@ -53,8 +56,8 @@ class SamplesController extends AppController
             $sample = $Samples->patchEntity($sample, $this->request->getData());
 
             if ($Samples->save($sample)) {
-                $this->Flash->success('¡La muestra fue actualizada correctamente!');
-                return $this->redirect(['action' => 'view', $id]); // <- vuelve al detalle
+                $this->Flash->success('La muestra fue actualizada correctamente!');
+                return $this->redirect(['action' => 'view', $id]);
             }
 
             $this->Flash->error('No se pudo actualizar la muestra. Intentalo nuevamente.');

@@ -13,6 +13,12 @@ class SamplesTable extends Table
         parent::initialize($config);
         $this->setTable('samples');
         $this->setPrimaryKey('id');
+
+        $this->hasOne('AnalysisResults', [
+            'foreignKey' => 'sample_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator

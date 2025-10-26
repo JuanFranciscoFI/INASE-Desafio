@@ -12,6 +12,8 @@ class Sample extends Entity
         'company'       => true,
         'species'       => true,
         'seed_quantity' => true,
+        'analysis_result' => true,
+
 
         'id' => false,
         '*'  => false,

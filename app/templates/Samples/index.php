@@ -12,6 +12,7 @@
       <th style="text-align:center;">Empresa</th>
       <th style="text-align:center;">Especie</th>
       <th style="text-align:center;">Cantidad</th>
+      <th style="width:120px; text-align:center;">Análisis</th>
       <th style="width:60px; text-align:center;">&nbsp;</th>
     </tr>
   </thead>
@@ -23,6 +24,10 @@
       <td style="text-align:center;"><?= h($s->company) ?></td>
       <td style="text-align:center;"><?= h($s->species) ?></td>
       <td style="text-align:center;"><?= h($s->seed_quantity) ?></td>
+
+      <td style="text-align:center;">
+        <?= $this->Html->link('Ver', ['controller' => 'AnalysisResults', 'action' => 'view', $s->id]) ?>
+      </td>
 
       <td style="text-align:center;">
         <?= $this->Form->postLink(

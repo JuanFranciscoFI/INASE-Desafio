@@ -62,6 +62,10 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/samples/view/*', ['controller' => 'Samples', 'action' => 'view']);
         $builder->connect('/samples/edit/*', ['controller' => 'Samples', 'action' => 'edit']);
 
+        $builder->connect('/analysis-results/add/*',  ['controller' => 'AnalysisResults', 'action' => 'add']);
+        $builder->connect('/analysis-results/edit/*', ['controller' => 'AnalysisResults', 'action' => 'edit']);
+        $builder->connect('/analysis-results/view/*', ['controller' => 'AnalysisResults', 'action' => 'view']);
+
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */
