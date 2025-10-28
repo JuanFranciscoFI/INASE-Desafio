@@ -40,13 +40,15 @@ echo $this->Form->control('inert_materials', [
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
   <div>
-    <?= $this->Html->link('Volver', ['controller' => 'Samples', 'action' => 'index'], ['class' => 'button']) ?>
+    <?= $this->Html->link('Volver', ['controller' => 'Samples', 'action' => 'index'], [
+      'class' => 'button outline btn-center'
+    ]) ?>
   </div>
 
   <div style="display:flex; gap:8px;">
-    <button type="button" id="editBtn"   class="button button-primary">Editar</button>
-    <button type="submit" id="saveBtn"   class="button" style="display:none;">Guardar cambios</button>
-    <button type="button" id="cancelBtn" class="button" style="display:none;">Cancelar</button>
+    <button type="button" id="editBtn"   class="button btn-brand btn-center">Editar</button>
+    <button type="submit" id="saveBtn"   class="button btn-brand btn-center" style="display:none;">Guardar cambios</button>
+    <button type="button" id="cancelBtn" class="button outline btn-center"   style="display:none;">Cancelar</button>
   </div>
 </div>
 

@@ -1,8 +1,8 @@
-<!-- <h1>Muestras</h1> -->
-
-<div style="display:flex; align-items:center; gap:12px;">
-  <?= $this->Html->link('Nueva muestra', ['action' => 'add'], ['class' => 'button']) ?>
-</div>
+<?= $this->Html->link(
+  'Nueva muestra',
+  ['action' => 'add'],
+  ['class' => 'button btn-brand btn-center']
+) ?>
 
 <table class="index">
   <thead>

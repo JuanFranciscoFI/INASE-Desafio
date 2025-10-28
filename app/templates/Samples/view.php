@@ -5,7 +5,7 @@ $backTarget = ($this->request->getQuery('from') === 'report')
     ? [
         'controller' => 'Reports',
         'action'     => 'index',
-        '?'          => array_intersect_key($qp, array_flip(['species'])) // reenviamos filtros conocidos
+        '?'          => array_intersect_key($qp, array_flip(['species']))
       ]
     : ['controller' => 'Samples', 'action' => 'index'];
 ?>
@@ -13,7 +13,7 @@ $backTarget = ($this->request->getQuery('from') === 'report')
 <h1>Detalle de muestra</h1>
 
 <?= $this->Form->create($sample, [
-    'url'    => ['action' => 'edit', $sample->id, '?' => $qp], // preserva query params al enviar
+    'url'    => ['action' => 'edit', $sample->id, '?' => $qp],
     'method' => 'patch',
     'id'     => 'sampleForm'
 ]) ?>
@@ -39,13 +39,13 @@ echo $this->Form->control('seed_quantity', [
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
   <div>
-    <?= $this->Html->link('Volver', $backTarget, ['class' => 'button']) ?>
+    <?= $this->Html->link('Volver', $backTarget, ['class' => 'button outline btn-center']) ?>
   </div>
 
   <div style="display:flex; gap:8px;">
-    <button type="button" id="editBtn"   class="button button-primary">Editar</button>
-    <button type="submit" id="saveBtn"   class="button" style="display:none;">Guardar cambios</button>
-    <button type="button" id="cancelBtn" class="button" style="display:none;">Cancelar</button>
+    <button type="button" id="editBtn"   class="button btn-brand btn-center">Editar</button>
+    <button type="submit" id="saveBtn"   class="button btn-brand btn-center" style="display:none;">Guardar cambios</button>
+    <button type="button" id="cancelBtn" class="button outline btn-center"   style="display:none;">Cancelar</button>
   </div>
 </div>
 

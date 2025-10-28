@@ -7,28 +7,43 @@ class ReportsController extends AppController
 {
     public function index()
     {
+        $q = $this->request->getQueryParams();
+        $species = isset($q['species']) && $q['species'] !== '' ? $q['species'] : null;
+
         $Samples = $this->fetchTable('Samples');
 
         $query = $Samples->find()
             ->contain(['AnalysisResults'])
-            ->orderAsc('Samples.id');
+            ->order(['Samples.id' => 'DESC']);
 
-        $species = $this->request->getQuery('species');
-        if ($species) {
+        if ($species !== null) {
             $query->where(['Samples.species' => $species]);
         }
 
-        $rows = $query->all();
+        $this->paginate = [
+            'limit' => 10,
+            'maxLimit' => 100,
+            'sortableFields' => [
+                'Samples.id',
+                'Samples.company',
+                'Samples.species',
+            ],
+        ];
+
+        $rows = $this->paginate($query);
 
         $speciesOptions = $Samples->find()
             ->select(['species'])
-            ->distinct()
+            ->distinct(['species'])
             ->orderAsc('species')
             ->all()
-            ->combine('species', 'species')
+            ->extract('species')
+            ->combine(fn($v) => $v, fn($v) => $v)
             ->toArray();
 
-        $this->set(compact('rows', 'speciesOptions'));
-        $this->set('filters', ['species' => $species]);
+        $filters = ['species' => $species];
+
+        $this->set(compact('rows', 'speciesOptions', 'filters'));
     }
+
 }
