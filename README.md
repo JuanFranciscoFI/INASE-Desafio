@@ -33,9 +33,9 @@ docker-compose logs -f
 1) Crear muestra:
    - En “Samples”, seleccioná “Nueva muestra”, completá los campos obligatorios y guardá.
 2) Cargar y consultar resultados:
-   - En el detalle de la muestra, usá “Cargar resultados” para adjuntar datos/archivo. Los resultados quedan visibles en la misma vista.
+   - En el detalle de la muestra, usá “Cargar resultados” para adjuntar datos. Los resultados quedan visibles en la vista de muestras.
 3) Reportes con filtros:
-   - Ingresá a “Reportes”, aplicá el filtro por especie y, si corresponde, combiná con otros filtros (fecha/estado). Visualizá la reportería consolidada.
+   - Ingresá a “Reportes”, aplicá el filtro por especie. Visualizá la reportería consolidada.
 
 ### Comandos útiles
 - Reiniciar con reconstrucción:
