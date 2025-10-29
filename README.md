@@ -9,7 +9,7 @@ Aplicación para la gestión de muestras de semillas, la carga y consulta de res
   - Visualización del detalle de cada muestra.
   - Carga y visualización de los resultados asociados a cada muestra desde la misma página.
 - Reportes
-  - Sección de reportería para consultar métricas y listados de muestras/resultados.
+  - Sección de reportería para consultar resultados/análisis.
   - Filtrado por especie para focalizar los datos mostrados.
 
 ## Flujo de uso
