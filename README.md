@@ -32,8 +32,8 @@ docker-compose logs -f
 ### Flujo funcional
 1) Crear muestra:
    - En “Samples”, seleccioná “Nueva muestra”, completá los campos obligatorios y guardá.
-2) Cargar y consultar resultados:
-   - En el detalle de la muestra, usá “Cargar resultados” para adjuntar datos. Los resultados quedan visibles en la vista de muestras.
+2) Cargar Análisis:
+   - En la misma vista de las muestras vas a encontrar un botón para ver los análisis, allí podrás cargar los mismos (si no lo tienes) o editar los existentes. 
 3) Reportes con filtros:
    - Ingresá a “Reportes”, aplicá el filtro por especie. Visualizá la reportería consolidada.
 
