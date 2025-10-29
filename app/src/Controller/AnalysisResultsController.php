@@ -80,13 +80,13 @@ class AnalysisResultsController extends AppController
 
             if ($Analysis->save($analysis)) {
                 $this->Flash->success('¡Los resultados fueron guardados correctamente!');
-                return $this->redirect(['action' => 'view', $sampleId]);
+                return $this->redirect(['action' => 'edit', $sampleId]);
             }
 
             $this->Flash->error('No se pudieron guardar los resultados.');
         }
 
-        $this->set(compact('analysis', 'sample'));
-        return $this->render('view');
+        $this->set(compact('analysis', 'sample', 'sampleId'));
+        return $this->render('edit');
     }
 }

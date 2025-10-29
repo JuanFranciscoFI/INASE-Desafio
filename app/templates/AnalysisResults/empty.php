@@ -12,7 +12,7 @@ $this->assign('title', 'Resultados');
   <div style="display:flex;gap:8px">
     <?= $this->Html->link(
       'Cargar',
-      ['action' => 'edit', $sample->id],
+      ['controller' => 'AnalysisResults', 'action' => 'edit', $sample->id],
       ['class' => 'button outline btn-center']
     ) ?>
     <?= $this->Html->link(
